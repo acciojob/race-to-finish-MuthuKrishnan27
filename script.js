@@ -1,37 +1,35 @@
+let prom1  = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Prom1 resolved");
+            },2000);
+        });
 
-const outputDiv = document.getElementById('output');
+        let prom2  = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Prom2 resolved");
+            },5000);
+        });
 
-// Function to generate a random number between min and max (inclusive)
-function getRandomTime(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+        let prom3  = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Prom3 resolved");
+            },1000);
+        });
 
-// Create an array of promises with random timeouts
-const promarr = [];
-for (let i = 0; i < 5; i++) {
-  const timeout = getRandomTime(1000, 5000);
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(`Promise ${i + 1} resolved after ${timeout} milliseconds`);
-    }, timeout);
-  });
-  promarr.push(promise);
-}
+        let prom4  = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Prom4 resolved");
+            },4000);
+        });
 
-window.promises = Promise.any(promarr);
+        let prom5  = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("Prom5 resolved");
+            },3000);
+        });
+
+window.promises = Promise.any([prom1,prom2,prom3,prom4,prom5]);
+let output = document.getElementById("output");
 promises.then((result)=>{
-	outputDiv.textContent = result;
+	output.innerText = result;
 })
-
-
-// Use Promise.any() to wait for the first promise to resolve
-// Promise.any(promises)
-//   .then((result) => {
-//     outputDiv.textContent = result;
-//   })
-//   .catch((error) => {
-//     console.log('Error:', error);
-//   });
-
-// Do not change the code above this
-// add your promises to the array `promises`
