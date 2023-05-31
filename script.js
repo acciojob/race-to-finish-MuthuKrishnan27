@@ -1,4 +1,3 @@
-window.promises = Promise.any([prom1,prom2,prom3,prom4,prom5]);
 
 let prom1  = new Promise((resolve,reject)=>{
 	setTimeout(()=>{
@@ -29,6 +28,8 @@ let prom5  = new Promise((resolve,reject)=>{
 		resolve("Prom5 resolved");
 	},3000);
 });
+
+window.promises = Promise.any([prom1,prom2,prom3,prom4,prom5]);
 
 let output = document.getElementById("output");
 output.innerText = window.promises;
